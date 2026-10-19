@@ -1,0 +1,198 @@
+{% load static %}
+<header class="sticky top-0 z-50 bg-black/95 backdrop-blur-md border-b border-neutral-900 text-white transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Brand Logo Section -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center group">
+          <img 
+            src="{% static 'image/logo.png' %}" 
+            alt="LINO - Fragrance of Heaven" 
+            class="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-95 group-hover:opacity-100 transition-opacity"
+            onerror="this.style.display='none'; document.getElementById('navbar-text-logo').classList.remove('hidden');"
+          />
+          <div id="navbar-text-logo" class="hidden flex flex-col items-center">
+            <span class="font-serif text-2xl tracking-[0.25em] font-bold text-white">LINO</span>
+            <span class="text-[9px] tracking-[0.35em] text-neutral-300 uppercase">Fragrance of Heaven</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden md:flex items-center space-x-10">
+        <a href="/" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}
+          class="relative py-1 text-sm tracking-wider transition-colors duration-200 {% if request.resolver_match.url_name == 'home' %}font-medium text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:rounded-full after:bg-white after:content-['']{% else %}font-normal text-neutral-300 hover:text-white{% endif %}">
+          Home
+        </a>
+        <a href="/products/" {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}aria-current="page"{% endif %}
+          class="relative py-1 text-sm tracking-wider transition-colors duration-200 {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}font-medium text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:rounded-full after:bg-white after:content-['']{% else %}font-normal text-neutral-300 hover:text-white{% endif %}">
+          Products
+        </a>
+        <a href="/about/" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %}
+          class="relative py-1 text-sm tracking-wider transition-colors duration-200 {% if request.resolver_match.url_name == 'about' %}font-medium text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:rounded-full after:bg-white after:content-['']{% else %}font-normal text-neutral-300 hover:text-white{% endif %}">
+          About
+        </a>
+        <a href="/contact/" {% if request.resolver_match.url_name == 'contact' %}aria-current="page"{% endif %}
+          class="relative py-1 text-sm tracking-wider transition-colors duration-200 {% if request.resolver_match.url_name == 'contact' %}font-medium text-white after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:rounded-full after:bg-white after:content-['']{% else %}font-normal text-neutral-300 hover:text-white{% endif %}">
+          Contact
+        </a>
+      </nav>
+
+      <!-- Right Utility Icons -->
+      <div class="flex items-center space-x-6 sm:space-x-7">
+        
+        <!-- Search Button -->
+        <button 
+          id="search-toggle-btn"
+          type="button" 
+          aria-label="Search" 
+          class="text-neutral-200 hover:text-white transition-colors duration-200 p-1"
+          onclick="toggleSearchModal()"
+        >
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+          </svg>
+        </button>
+
+        <!-- Cart Icon with Circular Badge -->
+        <a href="/cart/" {% if request.resolver_match.url_name == 'cart' %}aria-current="page"{% endif %}
+          aria-label="Shopping Cart" 
+          class="relative p-1 transition-colors duration-200 group {% if request.resolver_match.url_name == 'cart' %}text-white{% else %}text-neutral-200 hover:text-white{% endif %}"
+        >
+          <svg class="w-5 h-5 sm:w-6 sm:h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+          </svg>
+          <span 
+            id="nav-cart-badge"
+            class="absolute -top-1.5 -right-2 bg-black text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-white/80 group-hover:scale-110 transition-transform"
+          >
+            0
+          </span>
+        </a>
+
+        <!-- User Profile Account Icon -->
+        <div class="relative">
+          <button 
+            type="button" 
+            aria-label="User Account" 
+            class="text-neutral-200 hover:text-white transition-colors duration-200 p-1 flex items-center"
+            onclick="toggleAccountMenu()"
+          >
+            <svg class="w-6 h-6 sm:w-7 sm:h-7 stroke-[1.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          
+          <div 
+            id="account-dropdown" 
+            class="hidden absolute right-0 mt-3 w-48 bg-neutral-950 border border-neutral-800 rounded-xl shadow-2xl py-2 z-50 text-sm text-neutral-300"
+          >
+            <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Sign In</a>
+            <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Create Account</a>
+            <hr class="border-neutral-800 my-1">
+            <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Track Order</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button 
+          id="mobile-menu-btn" 
+          type="button" 
+          aria-label="Toggle Navigation Menu" 
+          class="md:hidden text-neutral-200 hover:text-white p-1"
+          onclick="toggleMobileMenu()"
+        >
+          <svg class="w-6 h-6 stroke-[1.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-neutral-950 border-b border-neutral-800 px-4 pt-3 pb-6 space-y-3">
+    <a href="/" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'home' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">Home</a>
+    <a href="/products/" {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">Products</a>
+    <a href="/about/" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'about' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">About</a>
+    <a href="/contact/" {% if request.resolver_match.url_name == 'contact' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'contact' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">Contact</a>
+    <div class="pt-2 flex items-center justify-between text-neutral-400 text-xs">
+      <span>Luxury Fragrances &copy; LINO</span>
+      <a href="/cart/" {% if request.resolver_match.url_name == 'cart' %}aria-current="page"{% endif %} class="text-white font-semibold">View Bag</a>
+    </div>
+  </div>
+
+  <!-- Search Modal Overlay -->
+  <div id="search-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-start justify-center pt-24 px-4">
+    <div class="bg-neutral-900 border border-neutral-700 w-full max-w-2xl rounded-2xl p-6 shadow-2xl relative">
+      <div class="flex items-center justify-between pb-4 border-b border-neutral-800">
+        <h3 class="text-lg font-serif tracking-wider text-white">Search LINO Fragrances</h3>
+        <button onclick="toggleSearchModal()" class="text-neutral-400 hover:text-white p-1">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      <div class="mt-4 relative">
+        <input 
+          id="search-input"
+          type="text" 
+          placeholder="Search by perfume name, fragrance family (Oud, Floral, Amber)..." 
+          class="w-full bg-neutral-950 text-white placeholder-neutral-500 px-5 py-3.5 rounded-xl border border-neutral-700 focus:outline-none focus:border-white transition"
+        />
+        <div id="search-results" class="mt-4 space-y-2 max-h-60 overflow-y-auto">
+          <div class="text-xs text-neutral-400 uppercase tracking-wider py-1">Popular Fragrances</div>
+          <a href="#new-arrivals" onclick="toggleSearchModal()" class="flex items-center justify-between p-2 rounded-lg hover:bg-neutral-800 transition">
+            <span class="text-neutral-200 text-sm">LINO Noir - Eau De Parfum</span>
+            <span class="text-neutral-400 text-xs">₹ 1,499</span>
+          </a>
+          <a href="#new-arrivals" onclick="toggleSearchModal()" class="flex items-center justify-between p-2 rounded-lg hover:bg-neutral-800 transition">
+            <span class="text-neutral-200 text-sm">LINO Bloom - Eau De Parfum</span>
+            <span class="text-neutral-400 text-xs">₹ 1,499</span>
+          </a>
+          <a href="#new-arrivals" onclick="toggleSearchModal()" class="flex items-center justify-between p-2 rounded-lg hover:bg-neutral-800 transition">
+            <span class="text-neutral-200 text-sm">LINO Royal - Eau De Parfum</span>
+            <span class="text-neutral-400 text-xs">₹ 1,799</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) menu.classList.toggle('hidden');
+  }
+
+  function toggleAccountMenu() {
+    const menu = document.getElementById('account-dropdown');
+    if (menu) menu.classList.toggle('hidden');
+  }
+
+  function toggleSearchModal() {
+    const modal = document.getElementById('search-modal');
+    if (modal) {
+      modal.classList.toggle('hidden');
+      if (!modal.classList.contains('hidden')) {
+        setTimeout(() => document.getElementById('search-input')?.focus(), 100);
+      }
+    }
+  }
+
+  document.addEventListener('click', function(e) {
+    const accountBtn = e.target.closest('button[aria-label="User Account"]');
+    const accountDropdown = document.getElementById('account-dropdown');
+    if (!accountBtn && accountDropdown && !accountDropdown.classList.contains('hidden')) {
+      accountDropdown.classList.add('hidden');
+    }
+
+    const searchModal = document.getElementById('search-modal');
+    if (e.target === searchModal) {
+      searchModal.classList.add('hidden');
+    }
+  });
+</script>

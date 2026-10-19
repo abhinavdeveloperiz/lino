@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} | LINO Fragrance of Heaven{% endblock %}
+
+{% block content %}
+<div class="bg-neutral-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <nav aria-label="Breadcrumb" class="text-xs text-neutral-500">
+      <a href="{% url 'home' %}" class="hover:text-black">Home</a>
+      <span class="mx-2">/</span>
+      <a href="{% url 'products' %}" class="hover:text-black">Fragrances</a>
+      <span class="mx-2">/</span>
+      <span class="text-neutral-900">{{ product.name }}</span>
+    </nav>
+  </div>
+
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      <div class="relative rounded-2xl bg-white border border-neutral-200 overflow-hidden">
+        <div
+          class="absolute left-5 top-5 z-10 rounded-full bg-black px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+          Eau de Parfum
+        </div>
+        <div
+          class="aspect-square sm:aspect-[5/4] flex items-center justify-center p-8 sm:p-12 bg-gradient-to-br from-white via-neutral-50 to-stone-100">
+          <img src="{% static product.image %}" alt="{{ product.name }} perfume"
+            class="h-full w-full object-contain mix-blend-multiply">
+        </div>
+        <div class="flex items-center justify-center gap-2 border-t border-neutral-100 bg-white py-4">
+          <span class="h-1.5 w-8 rounded-full bg-black"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-neutral-300"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-neutral-300"></span>
+        </div>
+      </div>
+
+      <div class="lg:py-5">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.28em] text-neutral-500">LINO Signature Collection</p>
+        <h1 class="mt-3 break-words font-cinzel text-3xl font-semibold leading-tight tracking-normal text-neutral-950 sm:text-4xl lg:text-5xl">{{ product.name }}</h1>
+
+        <div class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <p class="text-sm text-neutral-600">{{ product.family }}</p>
+        </div>
+
+        <p class="mt-6 max-w-xl text-sm leading-7 text-neutral-600">{{ product.description }}</p>
+        <p class="mt-4 font-serif text-lg italic text-neutral-800">{{ product.tagline }}</p>
+
+        <div class="mt-7 flex items-baseline gap-3">
+          <p class="text-3xl font-semibold text-neutral-950">₹ {{ product.price }}</p>
+          <p class="text-sm text-neutral-500">Inclusive of all taxes</p>
+        </div>
+        <p class="mt-1 text-xs text-neutral-500">100 ml · Eau de Parfum</p>
+
+        <div class="mt-8">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-neutral-800">Choose size</h2>
+            <span class="text-xs text-neutral-500">100 ml selected</span>
+          </div>
+          <button type="button"
+            class="mt-3 rounded-lg border border-black bg-white px-5 py-3 text-left ring-1 ring-black">
+            <span class="block text-sm font-semibold text-neutral-900">100 ml</span>
+            <span class="mt-1 block text-xs text-neutral-500">₹ {{ product.price }}</span>
+          </button>
+        </div>
+
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <div
+            class="flex h-12 items-center justify-between rounded-full border border-neutral-300 bg-white px-4 sm:w-32">
+            <button type="button" data-quantity-decrease aria-label="Decrease quantity"
+              class="px-2 text-lg text-neutral-600 hover:text-black">−</button>
+            <output data-quantity class="text-sm font-medium" aria-live="polite">1</output>
+            <button type="button" data-quantity-increase aria-label="Increase quantity"
+              class="px-2 text-lg text-neutral-600 hover:text-black">+</button>
+          </div>
+          <button type="button" onclick="addToCart('{{ product.name }}', {{ product.price }})"
+            class="flex h-12 flex-1 items-center justify-center gap-3 rounded-full bg-black px-8 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:bg-neutral-800 active:scale-[0.99]">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272" />
+            </svg>
+            Add to bag
+          </button>
+        </div>
+
+        <details class="group mt-6 border-b border-neutral-200 py-5" open>
+          <summary class="flex cursor-pointer list-none items-center justify-between text-xs font-semibold uppercase tracking-[0.15em] text-neutral-900">
+            Fragrance notes
+            <span class="text-lg font-normal transition group-open:rotate-45">+</span>
+          </summary>
+          <div class="mt-5 grid grid-cols-3 gap-3">
+            <div class="rounded-lg bg-white p-3">
+              <p class="text-[9px] font-semibold uppercase tracking-widest text-neutral-400">Top</p>
+              <p class="mt-2 text-xs leading-5 text-neutral-700">{{ product.top_notes }}</p>
+            </div>
+            <div class="rounded-lg bg-white p-3">
+              <p class="text-[9px] font-semibold uppercase tracking-widest text-neutral-400">Heart</p>
+              <p class="mt-2 text-xs leading-5 text-neutral-700">{{ product.heart_notes }}</p>
+            </div>
+            <div class="rounded-lg bg-white p-3">
+              <p class="text-[9px] font-semibold uppercase tracking-widest text-neutral-400">Base</p>
+              <p class="mt-2 text-xs leading-5 text-neutral-700">{{ product.base_notes }}</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  (() => {
+    const quantity = document.querySelector('[data-quantity]');
+    let count = 1;
+    document.querySelector('[data-quantity-decrease]').addEventListener('click', () => {
+      count = Math.max(1, count - 1);
+      quantity.value = count;
+      quantity.textContent = count;
+    });
+    document.querySelector('[data-quantity-increase]').addEventListener('click', () => {
+      count += 1;
+      quantity.value = count;
+      quantity.textContent = count;
+    });
+  })();
+</script>
+{% endblock %}

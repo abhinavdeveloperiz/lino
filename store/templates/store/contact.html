@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | LINO Fragrance of Heaven{% endblock %}
+
+{% block content %}
+<section class="bg-black text-white py-16 px-4 sm:px-6 lg:px-8 text-center">
+  <span class="text-xs font-semibold tracking-[0.3em] uppercase text-neutral-400">Concierge Service</span>
+  <h1 class="text-4xl sm:text-5xl font-cinzel font-bold tracking-wider mt-2">
+    Contact Us
+  </h1>
+  <p class="text-neutral-400 text-sm sm:text-base mt-3 max-w-xl mx-auto">
+    Our perfume concierges are available to assist with fragrance styling, private orders, and gifting.
+  </p>
+</section>
+
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <div class="bg-white rounded-2xl border border-neutral-200 p-8 sm:p-12 shadow-sm">
+    <form onsubmit="event.preventDefault(); showToast('Message sent! Our fragrance advisor will contact you within 24 hours.', 'success'); this.reset();" class="space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Your Name</label>
+          <input type="text" required placeholder="Abhinav..." class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Email Address</label>
+          <input type="email" required placeholder="abhinav@example.com" class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black" />
+        </div>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Subject</label>
+        <input type="text" required placeholder="Order inquiry / Bespoke Scent consultation" class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black" />
+      </div>
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-neutral-700 mb-2">Message</label>
+        <textarea rows="4" required placeholder="How can we assist you today?" class="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black"></textarea>
+      </div>
+      <button type="submit" class="w-full sm:w-auto bg-black hover:bg-neutral-800 text-white font-semibold text-xs tracking-wider uppercase px-8 py-3.5 rounded-full transition">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
+{% endblock %}

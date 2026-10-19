@@ -1,0 +1,165 @@
+{% load static %}
+<footer class="bg-black text-neutral-400 border-t border-neutral-900 mt-20">
+  
+  <!-- Trust Badges & Brand Values Bar -->
+  <div class="border-b border-neutral-900/80 bg-neutral-950/60 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="flex flex-col items-center p-3">
+          <svg class="w-7 h-7 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.635v6.635" />
+          </svg>
+          <span class="text-white text-xs font-semibold tracking-wider uppercase">Free Express Shipping</span>
+          <span class="text-[11px] text-neutral-500 mt-0.5">On all orders above ₹999</span>
+        </div>
+
+        <div class="flex flex-col items-center p-3">
+          <svg class="w-7 h-7 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+          </svg>
+          <span class="text-white text-xs font-semibold tracking-wider uppercase">100% Authentic Scents</span>
+          <span class="text-[11px] text-neutral-500 mt-0.5">Formulated in Grasse, France</span>
+        </div>
+
+        <div class="flex flex-col items-center p-3">
+          <svg class="w-7 h-7 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.25 4.5c-7.5 0-13.5 3.75-13.5 10.5a4.5 4.5 0 004.5 4.5c6.75 0 9-7.5 9-15zM4.5 21l9-9" />
+          </svg>
+          <span class="text-white text-xs font-semibold tracking-wider uppercase">Cruelty Free & Vegan</span>
+          <span class="text-[11px] text-neutral-500 mt-0.5">Ethically sourced botanicals</span>
+        </div>
+
+        <div class="flex flex-col items-center p-3">
+          <svg class="w-7 h-7 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H4.5a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+          </svg>
+          <span class="text-white text-xs font-semibold tracking-wider uppercase">Luxury Gift Wrapping</span>
+          <span class="text-[11px] text-neutral-500 mt-0.5">Complimentary with every bottle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+      
+      <!-- Brand & Mission (Col 1-2) -->
+      <div class="lg:col-span-2 space-y-5">
+        <a href="/" class="inline-block">
+          <img 
+            src="{% static 'image/logo.png' %}" 
+            alt="LINO Logo" 
+            class="h-10 sm:h-12 w-auto brightness-0 invert opacity-95"
+            onerror="this.style.display='none'; document.getElementById('footer-brand-logo').classList.remove('hidden');"
+          />
+          <div id="footer-brand-logo" class="hidden">
+            <span class="font-serif text-2xl tracking-[0.25em] font-bold text-white">LINO</span>
+            <p class="text-[9px] tracking-[0.35em] text-neutral-400 uppercase">Fragrance of Heaven</p>
+          </div>
+        </a>
+        <p class="text-sm text-neutral-400 leading-relaxed max-w-sm">
+          LINO captures the eternal mystery and elegance of rare scents. Crafted with artisanal passion, our fragrances leave an unforgettable signature on those who embrace them.
+        </p>
+        
+        <!-- Social Media Links -->
+        <div class="flex items-center space-x-4 pt-2">
+          <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-600 transition">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-600 transition">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M9 8H6v4h3v12h5V12h3.642L18 8h-4V6.333C14 5.374 14.5 5 15.5 5H18V0h-3.808C10.597 0 9 1.583 9 4.615V8z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-600 transition">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest" class="w-9 h-9 rounded-full bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-600 transition">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12 0a12 12 0 0 0-4.37 23.18c-.05-.98-.1-2.48.02-3.55l.73-3.1s-.18-.37-.18-.91c0-.85.49-1.49 1.11-1.49.52 0 .78.39.78.86 0 .53-.34 1.32-.51 2.05-.15.61.31 1.11.91 1.11 1.09 0 1.93-1.15 1.93-2.8 0-1.47-1.05-2.49-2.56-2.49-1.74 0-2.77 1.31-2.77 2.66 0 .53.2.1.1 1.25.04.14.04.25.01.37l-.14.58c-.04.17-.15.21-.34.13-1.28-.59-2.08-2.45-2.08-3.95 0-3.21 2.33-6.16 6.73-6.16 3.53 0 6.28 2.52 6.28 5.88 0 3.51-2.21 6.33-5.28 6.33-1.03 0-2-.54-2.33-1.17l-.64 2.43c-.23.88-.86 1.98-1.28 2.66A12 12 0 1 0 12 0z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links (Col 3) -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white mb-4">Quick Links</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="/" class="hover:text-white transition">Home</a></li>
+          <li><a href="/about/" class="hover:text-white transition">About LINO</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Shop by Category</a></li>
+          <li><a href="#new-arrivals" class="hover:text-white transition">New Arrivals</a></li>
+          <li><a href="/contact/" class="hover:text-white transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Fragrance Collections (Col 4) -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white mb-4">Collections</h4>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="#shop-category" class="hover:text-white transition">Men's Fragrance</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Women's Perfumes</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Unisex Blends</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Travel Atomizers</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Royal Oud Collection</a></li>
+          <li><a href="#shop-category" class="hover:text-white transition">Curated Gift Sets</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Subscription (Col 5) -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-[0.2em] text-white mb-4">Newsletter</h4>
+        <p class="text-xs text-neutral-400 mb-4 leading-relaxed">
+          Be the first to discover limited edition releases, private tasting sets, and exclusive seasonal invitations.
+        </p>
+        <form onsubmit="handleNewsletterSubmit(event)" class="space-y-2">
+          <div class="relative">
+            <input 
+              id="newsletter-email"
+              type="email" 
+              required 
+              placeholder="Enter your email" 
+              class="w-full bg-neutral-900 border border-neutral-800 rounded-lg px-3.5 py-2.5 text-xs text-white placeholder-neutral-500 focus:outline-none focus:border-white transition"
+            />
+          </div>
+          <button 
+            type="submit" 
+            class="w-full bg-white hover:bg-neutral-200 text-black text-xs font-bold uppercase tracking-wider py-2.5 rounded-lg transition duration-200"
+          >
+            Subscribe
+          </button>
+        </form>
+        <p id="newsletter-status" class="hidden text-[11px] text-emerald-400 mt-2 font-medium">Thank you for joining the LINO inner circle!</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Bar: Legal & Copyright -->
+  <div class="border-t border-neutral-900 bg-black py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+      <div>
+        &copy; 2026 <span class="text-neutral-300 font-medium">LINO FRAGRANCE OF HEAVEN</span>. All rights reserved.
+      </div>
+      <div class="flex items-center space-x-6">
+        <a href="#" class="hover:text-neutral-300 transition">Privacy Policy</a>
+        <a href="#" class="hover:text-neutral-300 transition">Terms of Service</a>
+        <a href="#" class="hover:text-neutral-300 transition">Shipping Policy</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('newsletter-email');
+    const status = document.getElementById('newsletter-status');
+    if (input && input.value && status) {
+      status.classList.remove('hidden');
+      input.value = '';
+      setTimeout(() => {
+        status.classList.add('hidden');
+      }, 5000);
+    }
+  }
+</script>
