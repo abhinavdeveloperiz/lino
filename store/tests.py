@@ -27,6 +27,7 @@ class ProductPageTests(TestCase):
             'product_detail': '/products/',
             'contact': '/contact/',
             'cart': '/cart/',
+            'my_orders': '/my-orders/',
         }
         urls = {
             'home': reverse('home'),
@@ -35,6 +36,7 @@ class ProductPageTests(TestCase):
             'product_detail': reverse('product_detail', args=['noir']),
             'contact': reverse('contact'),
             'cart': reverse('cart'),
+            'my_orders': reverse('my_orders'),
         }
 
         for route_name, active_href in active_links.items():
@@ -44,6 +46,26 @@ class ProductPageTests(TestCase):
                 self.assertEqual(response.status_code, 200)
                 self.assertContains(response, f'<a href="{active_href}" aria-current="page"')
                 self.assertEqual(response.content.decode().count(f'<a href="{active_href}" aria-current="page"'), 2)
+
+    def test_cart_lists_sample_products_with_images(self):
+        response = self.client.get(reverse('cart'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sample bag items')
+        self.assertContains(response, 'LINO Noir')
+        self.assertContains(response, 'LINO Bloom')
+        self.assertContains(response, 'image/prod_noir.jpg')
+        self.assertNotContains(response, 'Your fragrance bag is empty')
+
+    def test_my_orders_lists_sample_order_details_and_product_images(self):
+        response = self.client.get(reverse('my_orders'))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Sample order history')
+        self.assertContains(response, 'LINO-2026-1048')
+        self.assertContains(response, 'Delivered')
+        self.assertContains(response, 'In transit')
+        self.assertContains(response, 'image/prod_noir.jpg')
 
     def test_wishlist_controls_are_absent_from_storefront(self):
         for url in (reverse('home'), reverse('products'), reverse('product_detail', args=['noir'])):

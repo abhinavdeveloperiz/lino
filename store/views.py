@@ -76,6 +76,29 @@ PRODUCTS = [
     },
 ]
 
+SAMPLE_CART = [
+    {'product': PRODUCTS[0], 'quantity': 1},
+    {'product': PRODUCTS[1], 'quantity': 1},
+    {'product': PRODUCTS[4], 'quantity': 1},
+]
+
+SAMPLE_ORDERS = [
+    {
+        'number': 'LINO-2026-1048',
+        'date': '18 Oct 2026',
+        'status': 'Delivered',
+        'products': [PRODUCTS[0], PRODUCTS[2]],
+        'total': 2998,
+    },
+    {
+        'number': 'LINO-2026-0921',
+        'date': '02 Oct 2026',
+        'status': 'In transit',
+        'products': [PRODUCTS[3]],
+        'total': 1799,
+    },
+]
+
 def home(request):
     return render(request, 'home.html', {'products': PRODUCTS})
 
@@ -92,7 +115,10 @@ def product_detail(request, slug):
     return render(request, 'product_detail.html', {'product': product})
 
 def cart(request):
-    return render(request, 'cart.html')
+    return render(request, 'cart.html', {'cart_items': SAMPLE_CART})
+
+def my_orders(request):
+    return render(request, 'my_orders.html', {'orders': SAMPLE_ORDERS})
 
 def contact(request):
     return render(request, 'contact.html')

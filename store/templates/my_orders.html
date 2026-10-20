@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Orders | LINO Fragrance of Heaven{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+  <div class="mb-8 border-b border-neutral-200 pb-5">
+    <p class="text-[10px] font-semibold uppercase tracking-[0.25em] text-neutral-500">Your account</p>
+    <h1 class="mt-2 font-serif text-3xl font-bold text-neutral-950 sm:text-4xl">My Orders</h1>
+    <p class="mt-2 text-sm text-neutral-500">Sample order history for the LINO storefront demo.</p>
+  </div>
+
+  <div class="space-y-6">
+    {% for order in orders %}
+    <article class="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-100 bg-neutral-50 px-5 py-4 sm:px-6">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Order {{ order.number }}</p>
+          <p class="mt-1 text-sm text-neutral-700">Placed {{ order.date }}</p>
+        </div>
+        <span class="rounded-full px-3 py-1.5 text-xs font-semibold {% if order.status == 'Delivered' %}bg-emerald-50 text-emerald-800{% else %}bg-amber-50 text-amber-800{% endif %}">
+          {{ order.status }}
+        </span>
+      </div>
+
+      <div class="divide-y divide-neutral-100 px-5 sm:px-6">
+        {% for product in order.products %}
+        <div class="flex items-center gap-4 py-4">
+          <a href="{% url 'product_detail' product.slug %}" class="h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-neutral-100">
+            <img src="{% static product.image %}" alt="{{ product.name }}" class="h-full w-full object-cover">
+          </a>
+          <div class="min-w-0 flex-1">
+            <a href="{% url 'product_detail' product.slug %}" class="font-serif font-semibold text-neutral-950 hover:underline">{{ product.name }}</a>
+            <p class="mt-1 text-xs text-neutral-500">Eau de Parfum · 100 ml</p>
+          </div>
+          <p class="text-sm font-semibold text-neutral-900">₹ {{ product.price }}</p>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="flex items-center justify-between border-t border-neutral-100 px-5 py-4 sm:px-6">
+        <span class="text-xs font-semibold uppercase tracking-wider text-neutral-500">Order total</span>
+        <span class="text-lg font-semibold text-neutral-950">₹ {{ order.total }}</span>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

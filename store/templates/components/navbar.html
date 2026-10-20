@@ -91,7 +91,7 @@
             <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Sign In</a>
             <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Create Account</a>
             <hr class="border-neutral-800 my-1">
-            <a href="#" class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">Track Order</a>
+            <a href="{% url 'my_orders' %}" {% if request.resolver_match.url_name == 'my_orders' %}aria-current="page"{% endif %} class="block px-4 py-2 hover:bg-neutral-800/80 hover:text-white transition">My Orders</a>
           </div>
         </div>
 
@@ -118,6 +118,7 @@
     <a href="/products/" {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'products' or request.resolver_match.url_name == 'product_detail' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">Products</a>
     <a href="/about/" {% if request.resolver_match.url_name == 'about' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'about' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">About</a>
     <a href="/contact/" {% if request.resolver_match.url_name == 'contact' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'contact' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">Contact</a>
+    <a href="{% url 'my_orders' %}" {% if request.resolver_match.url_name == 'my_orders' %}aria-current="page"{% endif %} class="block py-2 border-b border-neutral-800/60 {% if request.resolver_match.url_name == 'my_orders' %}font-medium text-white{% else %}text-neutral-300 hover:text-white{% endif %}">My Orders</a>
     <div class="pt-2 flex items-center justify-between text-neutral-400 text-xs">
       <span>Luxury Fragrances &copy; LINO</span>
       <a href="/cart/" {% if request.resolver_match.url_name == 'cart' %}aria-current="page"{% endif %} class="text-white font-semibold">View Bag</a>
